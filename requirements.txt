@@ -1,0 +1,7 @@
+ollama
+anthropic
+openai
+google-generativeai
+python-dotenv
+requests
+PyGithub
