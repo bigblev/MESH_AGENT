@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from agents.email_agent import triage_inbox, summarize_email
 import sys
 import argparse
 from agents.memory_agent import save_memory, recall_memory, list_memories
@@ -12,6 +13,8 @@ def main():
     parser.add_argument("--task", "-t", default="default",
                         choices=["default", "strategy", "strategy-deep", "code", "fast"],
                         help="Task type (affects model selection)")
+    parser.add_argument("--email-triage", action="store_true", help="Triage inbox")
+    parser.add_argument("--email-summarize", metavar="SEARCH", help="Summarize an email")
     parser.add_argument("--okr", action="store_true", help="Run OKR review")
     parser.add_argument("--gh-list", action="store_true", help="List GitHub repos")
     parser.add_argument("--gh-summarize", metavar="REPO", help="Summarize a GitHub repo")
@@ -38,6 +41,10 @@ def main():
         print(recall_memory(args.mem_recall))
     elif args.mem_list:
         print(list_memories())
+    elif args.email_triage:
+        print(triage_inbox())
+    elif args.email_summarize:
+        print(summarize_email(args.email_summarize))
     elif args.prompt:
         prompt = " ".join(args.prompt)
         if args.task == "strategy" or args.task == "strategy-deep":
