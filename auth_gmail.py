@@ -1,5 +1,4 @@
 from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
 import os
 
 SCOPES = [
@@ -18,22 +17,21 @@ flow.redirect_uri = 'http://localhost:8085/'
 
 auth_url, _ = flow.authorization_url(
     access_type='offline',
-    include_granted_scopes='true',
     prompt='consent'
 )
 
 print(f"\nOpen this URL in your browser:\n{auth_url}\n")
-print("After authorizing, you will be redirected to localhost:8085")
-print("Copy the FULL redirect URL from your browser address bar and paste it here:")
-full_url = input("Full redirect URL: ")
+print("After approving, browser will try localhost:8085 — it will fail to load.")
+print("Copy the FULL URL from your browser address bar and paste it below:")
+redirect_response = input("Paste full redirect URL: ")
 
 from urllib.parse import urlparse, parse_qs
-parsed = urlparse(full_url)
+parsed = urlparse(redirect_response)
 code = parse_qs(parsed.query)['code'][0]
 flow.fetch_token(code=code)
-creds = flow.credentials
 
 with open(TOKEN_FILE, 'w') as token:
-    token.write(creds.to_json())
+    token.write(flow.credentials.to_json())
 
-print("Authentication successful! Token saved.")
+print("Authentication successful!")
+
