@@ -1,24 +1,26 @@
 import os
 from dotenv import load_dotenv
 import ollama
+from tools.context_loader import get_context
 
 load_dotenv()
 
 MODELS = {
-    "default": "ollama:llama3.2:latest",
-    "strategy": "ollama:nous-hermes2:34b",  # Good balance of speed vs quality
-    "strategy-deep": "ollama:llama3.1:70b",  # Full power, slower
-    "code": "ollama:nous-hermes2:34b",
-    "fast": "ollama:llama3.2:latest",
+    "default": "llama3.2:latest",
+    "strategy": "nous-hermes2:34b",
+    "strategy-deep": "llama3.1:70b",
+    "code": "nous-hermes2:34b",
+    "fast": "llama3.2:latest",
 }
 
 def chat(prompt, task_type="default"):
     model = MODELS.get(task_type, MODELS["default"])
-    model_name = model.replace("ollama:", "")
+    context = get_context(prompt)
+    full_prompt = context + prompt if context else prompt
 
     response = ollama.chat(
-        model=model_name,
-        messages=[{"role": "user", "content": prompt}]
+        model=model,
+        messages=[{"role": "user", "content": full_prompt}]
     )
     return response["message"]["content"]
 

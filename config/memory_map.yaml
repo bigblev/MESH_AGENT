@@ -1,0 +1,25 @@
+base_context:
+  - memory_20260609_204105.md
+  - memory_20260609_204643.md
+  - memory_20260609_204643.md
+
+keywords:
+  pixelworks:
+    - project_pixelworks.md
+    - pixelworks_interview_robin_ma.md
+  robin:
+    - pixelworks_interview_robin_ma.md
+  network:
+    - project_network_agents.md
+  security:
+    - project_network_agents.md
+  mesh:
+    - memory_20260609_204105.md
+  hardware:
+    - memory_20260609_204643.md
+  ollama:
+    - memory_20260609_204105.md
+  email:
+    - memory_20260609_204105.md
+  github:
+    - memory_20260609_204105.md
