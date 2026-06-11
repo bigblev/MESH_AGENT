@@ -1,0 +1,6 @@
+credentials/
+.env
+venv/
+__pycache__/
+agents/__pycache__/
+tools/__pycache__/
