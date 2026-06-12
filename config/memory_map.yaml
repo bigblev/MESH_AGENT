@@ -1,7 +1,6 @@
 base_context:
   - memory_20260609_204105.md
   - memory_20260609_204643.md
-  - memory_20260609_204643.md
 
 keywords:
   pixelworks:
@@ -23,6 +22,7 @@ keywords:
     - memory_20260609_204105.md
   github:
     - memory_20260609_204105.md
+    - memory_20260611_213351.md
   calendar:
     - memory_20260609_204105.md
   meeting:
