@@ -3,6 +3,7 @@ from agents.email_agent import triage_inbox, summarize_email
 import sys
 import argparse
 import subprocess
+from agents.calendar_agent import list_events, meeting_prep, daily_agenda
 from agents.memory_agent import save_memory, recall_memory, list_memories
 from tools.llm_router import chat
 from agents.strategy_agent import okr_review, strategic_question
@@ -37,7 +38,10 @@ Commands:
   !mem-list                     List memories
   !strategy <question>          Strategy question (34B)
   !deep <question>              Deep strategy (70B)
-                """)
+  !cal-list [days]              List upcoming events
+  !cal-prep <event>             Meeting prep
+  !cal-agenda                   Today's agenda briefing
+              """)
             elif user_input == '!okr':
                 print(okr_review())
             elif user_input == '!gh-list':
@@ -62,6 +66,14 @@ Commands:
                 print(strategic_question(user_input[10:]))
             elif user_input.startswith('!deep '):
                 print(chat(user_input[6:], 'strategy-deep'))
+            elif user_input == '!cal-list':
+                print(list_events())
+            elif user_input.startswith('!cal-list '):
+                print(list_events(int(user_input[10:])))
+            elif user_input.startswith('!cal-prep '):
+                print(meeting_prep(user_input[10:]))
+            elif user_input == '!cal-agenda':
+                print(daily_agenda())
             else:
                 print(chat(user_input, 'default'))
         except KeyboardInterrupt:
@@ -85,10 +97,19 @@ def main():
     parser.add_argument("--mem-save", metavar="CONTENT", help="Save a memory")
     parser.add_argument("--mem-recall", metavar="QUERY", help="Recall a memory")
     parser.add_argument("--mem-list", action="store_true", help="List all memories")
+    parser.add_argument("--cal-list", metavar="DAYS", nargs="?", const="7", help="List upcoming events")
+    parser.add_argument("--cal-prep", metavar="EVENT", help="Meeting prep for an event")
+    parser.add_argument("--cal-agenda", action="store_true", help="Today's agenda briefing")
     args = parser.parse_args()
 
     if args.interactive:
         interactive_mode()
+    elif args.cal_list:
+        print(list_events(int(args.cal_list)))
+    elif args.cal_prep:
+        print(meeting_prep(args.cal_prep))
+    elif args.cal_agenda:
+        print(daily_agenda())
     elif args.okr:
         print(okr_review())
     elif args.gh_list:
