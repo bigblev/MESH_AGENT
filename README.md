@@ -1,4 +1,4 @@
-# MESH AGENT 🤖
+﻿# MESH AGENT 🤖
 ### Multi-model Enterprise Strategy & Handler
 
 > **MESH** — **M**ulti-model **E**nterprise **S**trategy & **H**andler
@@ -446,6 +446,31 @@ Friday 4pm → Strategy Agent runs review
 
 ---
 
+## 🔐 Token Security
+
+GitHub 2FA is more than adequate for most personal projects — it protects your repo from unauthorized access and is the right baseline for any public or private repository.
+
+That said, some security strategies require a step further: **keeping tokens somewhere secret and separately accessible** from the codebase itself.
+
+This matters when:
+- You're running agents on a headless server or shared machine where file system access is broader
+- Your repo is public (like this one) and a `.gitignore` miss could expose credentials
+- You need tokens accessible across machines without committing them to git
+
+**Options worth knowing:**
+
+| Approach | Best For |
+|----------|----------|
+| `.env` file + `.gitignore` | Local dev — simple and sufficient for private machines |
+| OS keychain (macOS Keychain, Linux Secret Service) | Single-machine setups where you want system-level encryption at rest |
+| Password manager with CLI API (1Password, Bitwarden) | Multi-machine access — retrieve tokens programmatically without storing them in files |
+| Private `mesh-private` git repo (Hive Mind domain) | Secrets that need to sync across machines but stay out of the main codebase |
+| Secret management service (HashiCorp Vault, AWS Secrets Manager) | Team or production deployments where multiple services need credential access |
+
+MESH follows the `.env` + `.gitignore` + `credentials/` gitignore approach by default. If your threat model requires stronger isolation, the `mesh-private` Hive Mind repo pattern gives you git-synced secrets in a private repo that never touches the public `MESH_AGENT` codebase.
+
+---
+
 ## 📍 Roadmap
 
 ### Phase 1 — Foundation (In Progress)
@@ -483,3 +508,4 @@ Private — for personal business use.
 ---
 
 *Built with Claude (Anthropic). Designed to work with any LLM. Memory synced with Hive Mind.*
+
