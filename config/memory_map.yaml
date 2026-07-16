@@ -6,8 +6,21 @@ keywords:
   pixelworks:
     - project_pixelworks.md
     - pixelworks_interview_robin_ma.md
+    - transcripts/pixelworks_transcript_todd_20260716.md
   robin:
     - pixelworks_interview_robin_ma.md
+    - project_pixelworks.md
+  todd:
+    - project_pixelworks.md
+    - transcripts/pixelworks_transcript_todd_20260716.md
+  truecut:
+    - project_pixelworks.md
+    - transcripts/pixelworks_transcript_todd_20260716.md
+  sevan:
+    - project_pixelworks.md
+  disney:
+    - project_pixelworks.md
+    - transcripts/pixelworks_transcript_todd_20260716.md
   network:
     - project_network_agents.md
   security:
