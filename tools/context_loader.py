@@ -4,6 +4,7 @@ import yaml
 MEMORY_DIRS = [
     os.path.expanduser("~/repos/mesh-work"),
     os.path.expanduser("~/repos/mesh-identity"),
+    os.path.expanduser("~/repos/mesh-home"),
 ]
 MEMORY_MAP = os.path.expanduser("~/repos/MESH_AGENT/config/memory_map.yaml")
 

@@ -1,6 +1,6 @@
 base_context:
-  - memory_20260609_204105.md
-  - memory_20260609_204643.md
+  - user_profile.md
+  - project_mesh_agent_status.md
 
 keywords:
   pixelworks:
@@ -13,19 +13,18 @@ keywords:
   security:
     - project_network_agents.md
   mesh:
-    - memory_20260609_204105.md
+    - project_mesh_agent_status.md
   hardware:
-    - memory_20260609_204643.md
+    - project_mesh_agent_status.md
   ollama:
-    - memory_20260609_204105.md
+    - project_mesh_agent_status.md
   email:
-    - memory_20260609_204105.md
+    - project_mesh_agent_status.md
   github:
-    - memory_20260609_204105.md
-    - memory_20260611_213351.md
+    - project_mesh_agent_status.md
   calendar:
-    - memory_20260609_204105.md
+    - project_mesh_agent_status.md
   meeting:
-    - memory_20260609_204105.md
+    - project_mesh_agent_status.md
   xi:
     - pixelworks_interview_robin_ma.md
